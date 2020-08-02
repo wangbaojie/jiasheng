@@ -21,11 +21,8 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
-    "element-ui": "^2.13.2",
     "good-storage": "^1.1.1",
-    "qs.js": "^0.1.12",
     "vue-axios": "^2.1.5",
-    "vue-weui": "^0.3.2",
     "weui": "^2.3.0"
   }
 }
