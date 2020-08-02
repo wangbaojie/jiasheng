@@ -133,7 +133,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.getBrand();
-    this.chooseData = this.storage.get('choose');
+    var choose = this.storage.get('choose');
+
+    if (choose) {
+      this.chooseData = choose;
+    }
   },
   data: function data() {
     return {

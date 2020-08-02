@@ -118,7 +118,11 @@
         },
         mounted: function () {
             this.getBrand();
-            this.chooseData = this.storage.get('choose');
+            let choose = this.storage.get('choose');
+            if (choose) {
+                this.chooseData = choose;
+            }
+
         },
         data() {
 
@@ -142,7 +146,7 @@
             }
         },
         methods: {
-            async  getBrand() {
+            async getBrand() {
                 let that = this;
                 this.$axios({
                     method: 'get',
@@ -177,7 +181,7 @@
                     onConfirm: function (result) {
                         if (result[0].label == "请选择汽车品牌") {
                             that.chooseData.car_brand = '';
-                        }else{
+                        } else {
                             that.chooseData.car_brand = result[0].label;
                         }
 
