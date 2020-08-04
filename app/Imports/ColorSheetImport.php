@@ -43,7 +43,6 @@ class ColorSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
             ->where('color_no', $row['颜色编号'])
             ->where('year', $row['颜色年份'])
             ->where('color_type', $row['标准色/差异色'])
-            ->where('JS_color', $row['嘉盛色号'])
             ->first();
 
         if (empty($model_data)) {

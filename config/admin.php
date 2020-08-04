@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => env('LOGO','4nd.cn'),
+    'logo' => env('LOGO','<img src="/images/logo_mini.png" alt="Admin logo">'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => env('LOGO_MINI','4nd'),
+    'logo-mini' => env('LOGO_MINI','<img src="/images/logo_mini.png" alt="Admin logo">'),
 
     /*
     |--------------------------------------------------------------------------

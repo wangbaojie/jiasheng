@@ -23,7 +23,6 @@ class Data extends Model
         'series',
         'color_no',
         'color_name',
-        'JS_color',
         'year',
         'color_type'
     ];
@@ -64,18 +63,6 @@ class Data extends Model
     }
 
 
-//    public function getCreatedAtAttribute($value)
-//    {
-//
-//        return Carbon::parse($value)->toDateTimeString();
-//    }
-//
-//    public function getUpdatedAtAttribute($value)
-//    {
-//
-//        return Carbon::parse($value)->toDateTimeString();
-//    }
-//
 
 }
 

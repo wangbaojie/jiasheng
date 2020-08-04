@@ -42,7 +42,6 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
             ->where('color_no', $row['颜色编号'])
             ->where('year', $row['颜色年份'])
             ->where('color_type', $row['标准色/差异色'])
-            ->where('JS_color', $row['嘉盛色号'])
             ->first();
 
         if ($model_data) {
@@ -58,7 +57,6 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
             'series' => $row['车系'],
             'color_no' => $row['颜色编号'],
             'color_name' => $row['颜色名称'],
-            'JS_color' => $row['嘉盛色号'],
             'year' => $row['颜色年份'],
             'color_type' => $row['标准色/差异色'],
         ]);

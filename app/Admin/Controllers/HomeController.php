@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         return $content
             ->title('欢迎回来')
-            ->description('客户管理系统')
+            ->description('沈阳华彩科技有限公司')
             ->row(Dashboard::title())
             ->row(function (Row $row) {
 

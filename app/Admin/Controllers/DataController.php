@@ -34,7 +34,6 @@ class DataController extends AdminController
         $grid->column('brand_no','品牌编号')->sortable();
         $grid->car_brand('汽车品牌');
         $grid->color_name('颜色名称');
-        $grid->JS_color('嘉盛色号');
         $grid->year('颜色年份')->sortable();;
         $grid->color_type('标砖色/差异色');
 
@@ -98,7 +97,6 @@ class DataController extends AdminController
             $show->field('car_brand', '汽车品牌');
             $show->field('series', '车系');
             $show->field('color_no', '颜色编号');
-            $show->field('JS_color', '嘉盛色号');
             $show->field('color_name', '颜色名称');
             $show->field('year', '颜色年份');
             $show->field('color_type', '标准色/差异色');
@@ -154,7 +152,6 @@ class DataController extends AdminController
         });
         $form->column(1/2, function ($form) {
             $form->text('color_no', '颜色编号')->rules('required');
-            $form->text('JS_color', '嘉盛色号')->rules('required');
 
             $form->text('color_name', '颜色名称')->rules('required');
             $form->text('year', '颜色年份');
