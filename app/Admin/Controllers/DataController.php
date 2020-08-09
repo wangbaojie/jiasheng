@@ -100,6 +100,8 @@ class DataController extends AdminController
             $show->field('color_name', '颜色名称');
             $show->field('year', '颜色年份');
             $show->field('color_type', '标准色/差异色');
+            $show->field('images', '图片');
+            $show->images('图片')->image();
 
         $show->color('配方信息', function ($color) {
 
@@ -141,6 +143,7 @@ class DataController extends AdminController
             $form->text('brand_no', '品牌编号')->rules('required');
             $form->text('car_brand', '汽车品牌')->rules('required');
             $form->text('series', '车系')->rules('required');
+            $form->image('images', '图片');
 
 
         });

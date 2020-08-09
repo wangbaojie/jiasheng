@@ -24,7 +24,8 @@ class Data extends Model
         'color_no',
         'color_name',
         'year',
-        'color_type'
+        'color_type',
+        'images'
     ];
 
     public function color()
