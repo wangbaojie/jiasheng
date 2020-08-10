@@ -139,10 +139,10 @@ class DataController extends AdminController
     {
         $form = new Form(new Data());
         $form->column(1/2, function ($form) {
-            $form->text('brand', '品牌')->rules('required');
-            $form->text('brand_no', '品牌编号')->rules('required');
-            $form->text('car_brand', '汽车品牌')->rules('required');
-            $form->text('series', '车系')->rules('required');
+            $form->text('brand', '品牌');
+            $form->text('brand_no', '品牌编号');
+            $form->text('car_brand', '汽车品牌');
+            $form->text('series', '车系');
             $form->image('images', '图片');
 
 
@@ -154,11 +154,11 @@ class DataController extends AdminController
             $form->text('weight','配方重量');
         });
         $form->column(1/2, function ($form) {
-            $form->text('color_no', '颜色编号')->rules('required');
+            $form->text('color_no', '颜色编号');
 
-            $form->text('color_name', '颜色名称')->rules('required');
+            $form->text('color_name', '颜色名称');
             $form->text('year', '颜色年份');
-            $form->text('color_type', '标准色/差异色')->rules('required');
+            $form->text('color_type', '标准色/差异色');
 
 
         });
