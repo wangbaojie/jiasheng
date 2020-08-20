@@ -55,12 +55,12 @@ class Data extends Model
 
     public function scopeColorNo($query, $color_no)
     {
-        return $query->where('color_no', $color_no);
+        return $query->where('color_no', 'like', "%$color_no%");
     }
 
     public function scopeColorName($query, $color)
     {
-        return $query->where('color_name', $color);
+        return $query->where('color_name', 'like', "%$color%");
     }
 
 
