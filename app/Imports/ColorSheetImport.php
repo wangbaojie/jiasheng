@@ -35,16 +35,14 @@ class ColorSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
     public function model(array $row)
     {
 
-        $model_data = Data::where('brand', $row['品牌'])
-            ->where('brand_no', $row['品牌编号'])
-            ->where('car_brand', $row['汽车品牌'])
-            ->where('series', $row['车系'])
-            ->where('color_name', $row['颜色名称'])
-            ->where('color_no', $row['颜色编号'])
-            ->where('year', $row['颜色年份'])
-            ->where('color_type', $row['标准色/差异色'])
+        $model_data = Data::where('car_brand', !empty($row['汽车品牌'])?$row['汽车品牌']:'')
+            ->where('car_type', !empty($row['车型'])?$row['车型']:'')
+            ->where('year', !empty($row['车型年份'])?$row['车型年份']:'')
+            ->where('series', !empty($row['产品系列'])?$row['产品系列']:'')
+            ->where('color_name', !empty($row['颜色名称'])?$row['颜色名称']:'')
+            ->where('color_no', !empty($row['色号'])?$row['色号']:'')
+            ->where('color_type', !empty($row['差异色'])?$row['差异色']:'')
             ->first();
-
         if (empty($model_data)) {
             return null;
         }
@@ -52,11 +50,16 @@ class ColorSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
 
 
         return new ColorModel([
-            'datas_id' => $model_data->id,
-            'sort' => $row['配方序号'],
-            'color_master' => $row['色母编号'],
-            'attribute' => $row['色母特性'],
-            'weight' => $row['配方重量'],
+            'datas_id' => trim($model_data->id),
+            'sort' => trim($row['配方序号']),
+            'color_master' => trim($row['色母编号']),
+            'color_master_name' => trim($row['色母名称']),
+            'weight' => trim($row['色母量']),
+            'cumulative_weight' =>trim( $row['色母累积量']),
+            'storey' => trim($row['层数']),
+            'component' => trim($row['适用部件']),
+            'production' =>trim( $row['工序']),
+//            'images' => $row['图片'],
         ]);
 //            $dataModel->color->sort = $row['配方序号'];
 //            $dataModel->color->color_master = $row['色母编号'];

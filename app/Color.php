@@ -15,8 +15,13 @@ class Color extends Model
         'datas_id',
         'sort',
         'color_master',
-        'attribute',
-        'weight'
+        'color_master_name',
+        'cumulative_weight',
+        'weight',
+        'storey',
+        'component',
+        'production',
+//        'images'
     ];
 
     public function painter()

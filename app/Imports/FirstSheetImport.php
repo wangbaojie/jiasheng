@@ -6,6 +6,7 @@ use App\Data;
 use App\Data as DataModel;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -34,14 +35,14 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
     public function model(array $row)
     {
 
-        $model_data = Data::where('brand', $row['品牌'])
-            ->where('brand_no', $row['品牌编号'])
-            ->where('car_brand', $row['汽车品牌'])
-            ->where('series', $row['车系'])
-            ->where('color_name', $row['颜色名称'])
-            ->where('color_no', $row['颜色编号'])
-            ->where('year', $row['颜色年份'])
-            ->where('color_type', $row['标准色/差异色'])
+
+        $model_data = Data::where('car_brand', !empty($row['汽车品牌'])?$row['汽车品牌']:'')
+            ->where('car_type', !empty($row['车型'])?$row['车型']:'')
+            ->where('year', !empty($row['车型年份'])?$row['车型年份']:'')
+            ->where('series', !empty($row['产品系列'])?$row['产品系列']:'')
+            ->where('color_name', !empty($row['颜色名称'])?$row['颜色名称']:'')
+            ->where('color_no', !empty($row['色号'])?$row['色号']:'')
+            ->where('color_type', !empty($row['差异色'])?$row['差异色']:'')
             ->first();
 
         if ($model_data) {
@@ -51,14 +52,16 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
 
 
         return new DataModel([
-            'brand' => $row['品牌'],
-            'brand_no' => $row['品牌编号'],
-            'car_brand' => $row['汽车品牌'],
-            'series' => $row['车系'],
-            'color_no' => $row['颜色编号'],
-            'color_name' => $row['颜色名称'],
-            'year' => $row['颜色年份'],
-            'color_type' => $row['标准色/差异色'],
+//            'brand' => $row['品牌'],
+//            'brand_no' => $row['品牌编号'],
+            'car_brand' => trim($row['汽车品牌']),
+            'car_type' => trim($row['车型']),
+            'year' =>   trim($row['车型年份']),
+            'series' => trim($row['产品系列']),
+            'color_name' =>trim( $row['颜色名称']),
+            'color_no' =>trim( $row['色号']),
+            'color_type' => trim($row['差异色']),
+            'images' => trim($row['图片']),
         ]);
 //            $dataModel->color->sort = $row['配方序号'];
 //            $dataModel->color->color_master = $row['色母编号'];
